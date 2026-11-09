@@ -2,7 +2,7 @@ import os
 import re
 import json
 from datetime import datetime
-from flask import Flask, request, jsonify, render_template_string, session
+from flask import Flask, request, jsonify, render_template_string, session, send_file
 from database import get_db, init_db, hash_password
 
 app = Flask(__name__)
@@ -1220,6 +1220,15 @@ def presentation_demo_page():
             return f.read()
     return render_template_string(HTML_TEMPLATE)
 
+@app.route("/download/docx")
+@app.route("/download/reflection")
+@app.route("/download/reflection.docx")
+def download_docx():
+    file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "全國大學生二手交易平台_使用GoogleAntigravity製作_114153016許家羚_AI協作心得.docx")
+    if not os.path.exists(file_path):
+        file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "AI協作反思報告_全國大學生二手交易平台.docx")
+    return send_file(file_path, as_attachment=True, download_name="全國大學生二手交易平台_使用GoogleAntigravity製作_114153016許家羚_AI協作心得.docx")
+
 # ----------------- Main Web Interface -----------------
 @app.route("/")
 @app.route("/index")
@@ -1343,6 +1352,9 @@ HTML_TEMPLATE = """\n<!DOCTYPE html>
 
       <!-- 右側動作按鈕組 -->
       <div class="flex items-center gap-2.5">
+        <a href="/download/docx" class="hidden xl:flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white border-2 border-black px-3 py-2 rounded-xl text-xs font-black shadow-comic-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-comic transition">
+          <i class="fa-solid fa-file-word"></i> 📥 下載 AI 心得 DOCX
+        </a>
         <a href="/presentation" target="_blank" class="hidden lg:flex items-center gap-1.5 bg-rose-500 hover:bg-rose-600 text-white border-2 border-black px-3 py-2 rounded-xl text-xs font-black shadow-comic-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-comic transition">
           🎬 3分鐘展示演練
         </a>
@@ -1441,6 +1453,9 @@ HTML_TEMPLATE = """\n<!DOCTYPE html>
             </button>
             <a href="/presentation" target="_blank" class="bg-rose-500 hover:bg-rose-600 text-white font-black px-4 py-2.5 rounded-2xl text-xs border-3 border-black shadow-comic transition flex items-center gap-1.5 active:translate-y-0.5">
               <i class="fa-solid fa-video"></i> 🎬 3分鐘展示演練
+            </a>
+            <a href="/download/docx" class="bg-blue-600 hover:bg-blue-700 text-white font-black px-4 py-2.5 rounded-2xl text-xs border-3 border-black shadow-comic transition flex items-center gap-1.5 active:translate-y-0.5">
+              <i class="fa-solid fa-file-word"></i> 📥 下載 AI 協作心得 (.docx)
             </a>
           </div>
         </div>
