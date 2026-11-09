@@ -1,4 +1,5 @@
 # 全國大學生二手物品交換與買賣平台 - UI/UX 設計規範與操作流程 (UIUX.md)
+許家羚114153016
 > **設計風格**：熱血校園漫畫風 (Campus Manga & Comic Neubrutalism Design System)  
 > **標準規範**：遵循 `ui-ux-pro-max` 設計系統準則、WCAG 2.1 AA 無障礙對比標準與 RWD 自適應架構
 
