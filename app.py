@@ -1245,7 +1245,7 @@ HTML_TEMPLATE = """\n<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>全國大學生二手物品交換與買賣平台 · 熱血校園漫畫版 (Comic Edition)</title>
+  <title>全國大學生二手交易平台 · 114153016 許家羚 (使用 Google Antigravity 製作)</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script>
@@ -1329,7 +1329,7 @@ HTML_TEMPLATE = """\n<!DOCTYPE html>
           <div class="font-black text-lg sm:text-xl text-black tracking-tight flex items-center gap-1.5">
             校園二手寶 <span class="bg-black text-[#FFE600] text-[10px] px-2 py-0.5 rounded font-black tracking-widest uppercase">COMIC 連載中</span>
           </div>
-          <div class="text-[11px] font-extrabold text-black/80 tracking-wider">全國大學生二手交換與買賣</div>
+          <div class="text-[11px] font-extrabold text-black/90 tracking-wider">全國大學生二手交換與買賣 ｜ 114153016 許家羚 製作 (Google Antigravity)</div>
         </div>
       </a>
 
@@ -1413,8 +1413,13 @@ HTML_TEMPLATE = """\n<!DOCTYPE html>
         </div>
 
         <div class="relative z-10 space-y-3 max-w-2xl">
-          <div class="inline-flex items-center gap-2 bg-[#00E676] text-black text-xs px-3.5 py-1 rounded-full border-2 border-black font-black shadow-comic-sm">
-            ⚡ 連載特典 · .edu.tw 學生信箱認證 100% 通過 · 安全面交免運費！
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="inline-flex items-center gap-1.5 bg-[#00E676] text-black text-xs px-3.5 py-1 rounded-full border-2 border-black font-black shadow-comic-sm">
+              ⚡ 連載特典 · .edu.tw 學生信箱認證 100% 通過
+            </span>
+            <span class="inline-flex items-center gap-1 bg-[#FFE600] text-black text-xs px-3.5 py-1 rounded-full border-2 border-black font-black shadow-comic-sm">
+              👑 專案製作：114153016 許家羚 ｜ 使用 Google Antigravity 打造
+            </span>
           </div>
           <h2 class="text-2xl sm:text-4xl font-black text-black tracking-tight leading-tight">
             熱血校園！閒置課本與 3C 大出清！<br>
@@ -2045,7 +2050,7 @@ HTML_TEMPLATE = """\n<!DOCTYPE html>
     <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
       <div>
         <div class="font-black text-[#FFE600] text-base mb-1">全國大學生二手物品交換與買賣平台 · 漫畫連載版</div>
-        <p class="text-slate-400 font-bold">Vibe Coding 課程大作業整合規格：入門10項 + 中階10項 + 4大AI智慧模組全數落實。</p>
+        <p class="text-slate-300 font-bold">專案作者：114153016 許家羚 ｜ 開發工具：使用 Google Antigravity 製作 ｜ Vibe Coding 成果大作業</p>
       </div>
       <div class="flex gap-4 font-black">
         <span class="text-[#00E5FF]">📄 PRD 規格書</span>

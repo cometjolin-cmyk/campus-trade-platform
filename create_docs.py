@@ -119,7 +119,7 @@ def build_reflection_document(output_path):
         header = section.header
         hp = header.paragraphs[0]
         hp.alignment = WD_ALIGN_PARAGRAPH.RIGHT
-        hrun = hp.add_run("全國大學生二手物品交換與買賣平台 · AI 協作反思報告")
+        hrun = hp.add_run("全國大學生二手物品交換與買賣平台 · 114153016 許家羚 (使用 Google Antigravity 製作)")
         hrun.font.size = Pt(8.5)
         hrun.font.color.rgb = RGBColor(156, 163, 175)
         
@@ -168,6 +168,7 @@ def build_reflection_document(output_path):
     mp.paragraph_format.space_before = Pt(0)
     mp.paragraph_format.space_after = Pt(0)
     m_run = mp.add_run(
+        "【專題作者】114153016 許家羚　|　【開發環境】使用 Google Antigravity 製作\n"
         "【專案定位】全國大專院校校園二手交易平台 · 熱血漫畫新粗獷風格 (Manga Neubrutalism)\n"
         "【架構核心】Python Flask + SQLite + Vercel Serverless + FileReader 本機相片直選 + AI 視覺品名辨識\n"
         "【驗收實證】50 筆真實跨校測試資料庫、28 項 Unit & E2E 自動化測試 100% 通過 (0.040s)"

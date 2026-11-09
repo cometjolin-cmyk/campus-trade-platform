@@ -1,6 +1,8 @@
 # 全國大學生二手物品交換與買賣平台 (Campus Trade Platform)
 ### 💥 熱血校園漫畫新粗獷風格版 (Manga Neubrutalism Comic Edition)
 
+> **專案作者**：114153016 許家羚  
+> **開發環境**：使用 Google Antigravity 製作  
 > **專案定位**：大專院校專題大作業・Vibe Coding 成果整套交付  
 > **技術棧架構**：Python Flask + SQLite + Vercel Serverless + FileReader 本機照片直選 + 4 大 AI 智慧模組  
 > **線上儲存庫**：[https://github.com/cometjolin-cmyk/campus-trade-platform](https://github.com/cometjolin-cmyk/campus-trade-platform)  
