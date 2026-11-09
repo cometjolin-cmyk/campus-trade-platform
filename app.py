@@ -1188,6 +1188,15 @@ def ai_recommendations():
 
     return jsonify({"recommendations": recs})
 
+@app.route("/demo")
+@app.route("/presentation")
+def presentation_demo_page():
+    demo_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "presentation_3min.html")
+    if os.path.exists(demo_path):
+        with open(demo_path, "r", encoding="utf-8") as f:
+            return f.read()
+    return render_template_string(HTML_TEMPLATE)
+
 # ----------------- Main Web Interface -----------------
 @app.route("/")
 @app.route("/index")
@@ -1311,6 +1320,9 @@ HTML_TEMPLATE = """\n<!DOCTYPE html>
 
       <!-- 右側動作按鈕組 -->
       <div class="flex items-center gap-2.5">
+        <a href="/presentation" target="_blank" class="hidden lg:flex items-center gap-1.5 bg-rose-500 hover:bg-rose-600 text-white border-2 border-black px-3 py-2 rounded-xl text-xs font-black shadow-comic-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-comic transition">
+          🎬 3分鐘展示演練
+        </a>
         <button onclick="openModal('modal-ai-concierge')" class="hidden sm:flex items-center gap-1.5 bg-[#D946EF] text-white border-2 border-black px-3.5 py-2 rounded-xl text-xs font-black shadow-comic-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-comic transition">
           ✨ AI 探寶助手
         </button>
