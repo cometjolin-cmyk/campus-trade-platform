@@ -443,6 +443,11 @@ def build_reflection_document(output_path):
 
 if __name__ == "__main__":
     out_dir = "/Users/comet/.gemini/antigravity/scratch/campus_trade_platform"
+    
+    # 專屬作者命名的繳交文件
+    target_named_docx = os.path.join(out_dir, "全國大學生二手交易平台_使用GoogleAntigravity製作_114153016許家羚_AI協作心得.docx")
+    build_reflection_document(target_named_docx)
+
     target_docx = os.path.join(out_dir, "AI協作反思報告_全國大學生二手交易平台.docx")
     build_reflection_document(target_docx)
     
