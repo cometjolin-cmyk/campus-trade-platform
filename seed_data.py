@@ -1,9 +1,10 @@
 import json
-from database import get_db, init_db, hash_password
+import hashlib
 
-def seed_database():
-    init_db()
-    conn = get_db()
+def hash_password(password: str) -> str:
+    return hashlib.sha256(password.encode("utf-8")).hexdigest()
+
+def insert_seed_data_on_conn(conn):
     cursor = conn.cursor()
 
     # Clear existing data
@@ -1086,8 +1087,14 @@ def seed_database():
     """)
 
     conn.commit()
-    conn.close()
     print("Seed data successfully loaded with 50 products.")
+
+def seed_database():
+    from database import get_db, init_db
+    init_db()
+    conn = get_db()
+    insert_seed_data_on_conn(conn)
+    conn.close()
 
 if __name__ == "__main__":
     seed_database()

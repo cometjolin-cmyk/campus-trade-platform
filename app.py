@@ -1388,8 +1388,8 @@ HTML_TEMPLATE = """\n<!DOCTYPE html>
       <div class="flex items-center gap-2 shrink-0">
         <span class="font-black text-slate-800 text-[11px]">🏫 出現區域:</span>
         <select id="select-global-school" onchange="applyFilters()" class="bg-[#FFFDF8] border-2 border-black rounded-xl px-2.5 py-1 text-xs font-black text-black shadow-comic-sm">
-          <option value="全部學校">🌐 全國各大專院校 (全域)</option>
-          <option value="國立臺灣大學" selected>🏫 國立臺灣大學</option>
+          <option value="全部學校" selected>🌐 全國各大專院校 (全域)</option>
+          <option value="國立臺灣大學">🏫 國立臺灣大學</option>
           <option value="國立臺灣師範大學">🏫 國立臺灣師範大學</option>
           <option value="國立成功大學">🏫 國立成功大學</option>
           <option value="國立陽明交通大學">🏫 國立陽明交通大學</option>

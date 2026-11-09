@@ -1,8 +1,7 @@
 {
-  "version": 2,
   "functions": {
     "api/index.py": {
-      "includeFiles": "campus_trade.db"
+      "includeFiles": "{campus_trade.db,api/campus_trade.db}"
     }
   },
   "rewrites": [

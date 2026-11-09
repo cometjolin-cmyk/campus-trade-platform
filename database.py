@@ -3,6 +3,7 @@ import os
 import shutil
 import hashlib
 import json
+import seed_data
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -10,13 +11,21 @@ def get_db_path():
     # 當運行於 Vercel Serverless 環境時，使用唯一具備寫入權限的 /tmp/ 目錄
     if os.environ.get("VERCEL") or os.environ.get("AWS_LAMBDA_FUNCTION_NAME"):
         tmp_db = "/tmp/campus_trade.db"
-        src_db = os.path.join(BASE_DIR, "campus_trade.db")
         if not os.path.exists(tmp_db) or os.path.getsize(tmp_db) == 0:
-            if os.path.exists(src_db) and os.path.getsize(src_db) > 0:
-                try:
-                    shutil.copy2(src_db, tmp_db)
-                except Exception as e:
-                    print(f"Error copying DB to /tmp: {e}")
+            # 優先嘗試從各處複製已存在的 campus_trade.db (92KB)
+            possible_srcs = [
+                os.path.join(BASE_DIR, "campus_trade.db"),
+                os.path.join(os.path.dirname(BASE_DIR), "campus_trade.db"),
+                os.path.join(BASE_DIR, "api", "campus_trade.db"),
+                os.path.join(os.getcwd(), "campus_trade.db")
+            ]
+            for src in possible_srcs:
+                if os.path.exists(src) and os.path.getsize(src) > 0:
+                    try:
+                        shutil.copy2(src, tmp_db)
+                        break
+                    except Exception as e:
+                        print(f"Copying DB exception: {e}")
         return tmp_db
     return os.path.join(BASE_DIR, "campus_trade.db")
 
@@ -24,19 +33,19 @@ DB_FILE = get_db_path()
 
 def get_db():
     target_path = get_db_path()
-    needs_seed = False
-    if not os.path.exists(target_path) or os.path.getsize(target_path) == 0:
-        needs_seed = True
     conn = sqlite3.connect(target_path)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
-    if needs_seed:
-        _init_db_conn(conn)
-        try:
-            from seed_data import seed_database
-            seed_database()
-        except Exception as e:
-            print(f"Auto-seed on cold start exception: {e}")
+    
+    # 確保資料庫結構與基礎表格存在
+    _init_db_conn(conn)
+    
+    # 檢查是否有商品資料，若無商品資料立即自動寫入 50 筆種子資料！
+    cursor = conn.cursor()
+    cursor.execute("SELECT COUNT(*) FROM products")
+    if cursor.fetchone()[0] == 0:
+        seed_data.insert_seed_data_on_conn(conn)
+        
     return conn
 
 def hash_password(password: str) -> str:
