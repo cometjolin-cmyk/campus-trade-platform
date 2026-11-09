@@ -9,7 +9,3 @@ if PARENT_DIR not in sys.path:
 
 from app import app
 
-# Vercel Serverless Function WSGI 入口點
-# 當 Vercel 呼叫時，會自動尋找名為 app 的 WSGI 物件
-if __name__ == "__main__":
-    app.run()

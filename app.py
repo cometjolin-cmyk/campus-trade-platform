@@ -1190,8 +1190,22 @@ def ai_recommendations():
 
 # ----------------- Main Web Interface -----------------
 @app.route("/")
+@app.route("/index")
+@app.route("/app.py")
+@app.route("/api")
+@app.route("/api/")
+@app.route("/api/index")
+@app.route("/api/app.py")
 def index():
     return render_template_string(HTML_TEMPLATE)
+
+@app.errorhandler(404)
+def handle_404(e):
+    # 如果是真正不存在的 API 呼叫回傳 JSON 404，否則一律載入首頁漫畫介面
+    if request.path.startswith("/api/") and request.path not in ["/api", "/api/", "/api/index", "/api/index.py", "/api/app.py"]:
+        return jsonify({"success": False, "message": "API endpoint not found"}), 404
+    return render_template_string(HTML_TEMPLATE)
+
 
 # Load the HTML template string from a separate clean structure
 HTML_TEMPLATE = """\n<!DOCTYPE html>
